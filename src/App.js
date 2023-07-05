@@ -6,53 +6,40 @@ class App extends Component {
     super();
 
     this.state = {
-      info: {
-        firstName: '',
-        lastName: '',
-        phoneNumber: '',
-        email: '',
-      },
       cv: false,
-    }
-  }
-
-  handleInfoChange = (data) => {
-    changeInfo = (e) => {
-      this.setState(
-        info: {
-        [data]: e.target.value,
-      }
-      );
     }
   }
 
   viewCV = () => {
-    this.setState({
-      info: this.state.info,
-      cv: true,
-    });
-  }
-
-  backToForm = () => {
-    this.setState({
-      info: this.state.info,
-      cv: false,
-    });
+    if (this.state.cv) {
+      this.setState({
+        info: this.state.info,
+        cv: false,
+      });
+    } else {
+      this.setState({
+        info: this.state.info,
+        cv: true,
+      });
+    }
   }
 
   render() {
-    const { info, cv } = this.state;
-
+    const { cv } = this.state;
     if (cv) {
       return (
-        <div>CV</div>
+        <div>
+          <InfoInput show={cv} />
+        </div>
       );
     } else {
       return (
         <div className="App">
-          <h1>CV maker</h1>
           <h2>Personal information</h2>
-          <InfoInput />
+          <InfoInput show={cv} />
+          <h2>Experience</h2>
+          <h2>Education</h2>
+          <button onClick={this.viewCV}>View CV</button>
         </div>
       );
     }
