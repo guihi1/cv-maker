@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import '../styles/input.css';
+import '../styles/cv.css';
 
 class InfoInput extends Component {
   constructor(props) {
@@ -8,55 +10,56 @@ class InfoInput extends Component {
       info: {
         firstName: 'Your name',
         lastName: 'Your last name',
-        phoneNumber: 'Your phone number',
+        phoneNumber: '543245245',
         email: 'Your email',
       },
-      edit: false,
     }
   }
 
   handleInfoChange = data => (e) => {
     this.setState({
       info: {
+        ...this.state.info,
         [data]: e.target.value,
-      },
+      }
     });
   }
 
   render() {
-    const { info, edit } = this.state;
-    if (!edit) {
+    const { info } = this.state;
+
+    if (!this.props.edit) {
       return (
-        <div>
-          <p>{info.firstName}</p>
-          <p>{info.lastName}</p>
-          <p>{info.phoneNumber}</p>
-          <p>{info.email}</p>
+        <div className="form">
+          <h1>Information</h1>
+          <button onClick={() => this.props.mode('editInfo')}>Edit</button>
+          <p className="info">First name: {info.firstName}</p>
+          <p className="info">Last name: {info.lastName}</p>
+          <p className="info">Email: {info.email}</p>
+          <p className="info">Phone: {info.phone}</p>
         </div>
       );
     } else {
       return (
-        <div>
-          <div>
-            <label htmlFor="first-name" type="text"></label>
-            <input id="first-name" />
-            <button>Edit</button>
+        <div className="form">
+          <h1>Information</h1>
+          <div className="input-box">
+            <label htmlFor="first-name">First name</label>
+            <input id="first-name" type="text" onChange={this.handleInfoChange('firstName')} value={info.firstName} />
           </div>
-          <div>
-            <label htmlFor="last-name"></label>
-            <input id="last-name" type="text" />
-            <button>Edit</button>
+          <div className="input-box">
+            <label htmlFor="last-name">Last name</label>
+            <input id="last-name" type="text" onChange={this.handleInfoChange('lastName')} value={info.lastName} />
           </div>
-          <div>
-            <label htmlFor="email"></label>
-            <input id="email" type="email" />
-            <button>Edit</button>
+          <div className="input-box">
+            <label htmlFor="email">Email</label>
+            <input id="email" type="email" onChange={this.handleInfoChange('email')} value={info.email} />
           </div>
-          <div>
-            <label htmlFor="phone"></label>
-            <input id="phone" type="number" />
-            <button>Edit</button>
+          <div className="input-box">
+            <label htmlFor="phone">Phone number</label>
+            <input id="phone" type="text" onChange={this.handleInfoChange('phoneNumber')} value={info.phone} />
           </div>
+          <button id="info-button" onClick={() => this.props.mode('editInfo')}>Submit Info</button>
         </div>
       );
     }
