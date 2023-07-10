@@ -10,7 +10,7 @@ class InfoInput extends Component {
       info: {
         firstName: 'Your name',
         lastName: 'Your last name',
-        phoneNumber: '543245245',
+        phone: '543245245',
         email: 'Your email',
       },
     }
@@ -27,16 +27,13 @@ class InfoInput extends Component {
 
   render() {
     const { info } = this.state;
-
     if (!this.props.edit) {
       return (
         <div className="form">
-          <h1>Information</h1>
-          <button onClick={() => this.props.mode('editInfo')}>Edit</button>
-          <p className="info">First name: {info.firstName}</p>
-          <p className="info">Last name: {info.lastName}</p>
-          <p className="info">Email: {info.email}</p>
-          <p className="info">Phone: {info.phone}</p>
+          <button onClick={this.props.mode('editInfo')}>Edit</button>
+          <h1 className="info">{info.lastName} {info.firstName}</h1>
+          <p className="info"><strong>E-mail</strong> {info.email}</p>
+          <p className="info"><strong>Phone</strong> {info.phone}</p>
         </div>
       );
     } else {
@@ -59,7 +56,7 @@ class InfoInput extends Component {
             <label htmlFor="phone">Phone number</label>
             <input id="phone" type="text" onChange={this.handleInfoChange('phoneNumber')} value={info.phone} />
           </div>
-          <button id="info-button" onClick={() => this.props.mode('editInfo')}>Submit Info</button>
+          <button id="info-button" onClick={this.props.mode('editInfo')}>Submit Info</button>
         </div>
       );
     }
