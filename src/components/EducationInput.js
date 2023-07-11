@@ -9,8 +9,9 @@ class EduInput extends Component {
         uni: 'Uni name',
         start: '4893',
         end: '4233',
-        area: 'Engineering',
-      }
+        degree: 'Engineering',
+      },
+      edit: true,
     }
   }
 
@@ -23,12 +24,28 @@ class EduInput extends Component {
     });
   }
 
+  changeEdit = () => {
+    if (this.state.edit) {
+      this.setState({
+        edit: false,
+      });
+    } else {
+      this.setState({
+        edit: true,
+      });
+    }
+  }
+
   render() {
-    const { edu } = this.state;
-    if (!this.props.edit) {
+    const { edu, edit } = this.state;
+    if (!edit) {
       return (
         <div>
-          <div></div>
+          <button onClick={this.changeEdit}>Edit</button>
+          <h2>Education</h2>
+          <p>{edu.uni}</p>
+          <p>{edu.start} - {edu.end}</p>
+          <p>{edu.degree}</p>
         </div>
       );
     } else {
@@ -47,9 +64,9 @@ class EduInput extends Component {
           </div>
           <div>
             <label htmlFor="degree">Degree</label>
-            <input id="degree" type="text" />
+            <input id="degree" type="text" onChange={this.handleEduChange('degree')} value={edu.degree} />
           </div>
-          <button id="edu-button" onClick={this.props.mode(edu)}>Submit</button>
+          <button id="edu-button" onClick={this.changeEdit}>Submit</button>
         </div>
       );
     }
