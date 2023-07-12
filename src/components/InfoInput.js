@@ -30,7 +30,7 @@ class InfoInput extends Component {
     if (!this.props.edit) {
       return (
         <div className="form">
-          <button onClick={this.props.mode('editInfo')}>Edit</button>
+          <button onClick={this.props.mode}>Edit</button>
           <h1 className="info">{info.lastName} {info.firstName}</h1>
           <p className="info"><strong>E-mail</strong> {info.email}</p>
           <p className="info"><strong>Phone</strong> {info.phone}</p>
@@ -54,9 +54,9 @@ class InfoInput extends Component {
           </div>
           <div className="input-box">
             <label htmlFor="phone">Phone number</label>
-            <input id="phone" type="text" onChange={this.handleInfoChange('phoneNumber')} value={info.phone} />
+            <input id="phone" type="text" onChange={this.handleInfoChange('phone')} value={info.phone} />
           </div>
-          <button id="info-button" onClick={this.props.mode('editInfo')}>Submit Info</button>
+          <button id="info-button" onClick={this.props.mode}>Submit Info</button>
         </div>
       );
     }
