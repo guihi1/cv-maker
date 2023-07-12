@@ -12,6 +12,7 @@ class EduInput extends Component {
         degree: 'Engineering',
       },
       edit: true,
+      remove: false,
     }
   }
 
@@ -36,19 +37,27 @@ class EduInput extends Component {
     }
   }
 
+  removeSection = () => {
+    this.setState({
+      remove: true,
+    })
+  }
+
   render() {
-    const { edu, edit } = this.state;
-    if (!edit) {
+    const { edu, edit, remove } = this.state;
+
+    if (!edit && !remove) {
       return (
         <div>
           <button onClick={this.changeEdit}>Edit</button>
+          <button onClick={this.removeSection}>Delete</button>
           <h2>Education</h2>
           <p>{edu.uni}</p>
           <p>{edu.start} - {edu.end}</p>
           <p>{edu.degree}</p>
         </div>
       );
-    } else {
+    } else if (edit && !remove) {
       return (
         <div>
           <label htmlFor="uni">University</label>
@@ -69,6 +78,8 @@ class EduInput extends Component {
           <button id="edu-button" onClick={this.changeEdit}>Submit</button>
         </div>
       );
+    } else {
+      return null;
     }
   }
 }
