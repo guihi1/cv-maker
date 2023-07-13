@@ -12,6 +12,7 @@ class InfoInput extends Component {
         lastName: 'Your last name',
         phone: '543245245',
         email: 'Your email',
+        desc: 'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
       },
     }
   }
@@ -34,6 +35,7 @@ class InfoInput extends Component {
           <h1 className="info">{info.lastName} {info.firstName}</h1>
           <p className="info"><strong>E-mail</strong> {info.email}</p>
           <p className="info"><strong>Phone</strong> {info.phone}</p>
+          <p>{info.desc}</p>
         </div>
       );
     } else {
@@ -55,6 +57,10 @@ class InfoInput extends Component {
           <div className="input-box">
             <label htmlFor="phone">Phone number</label>
             <input id="phone" type="text" onChange={this.handleInfoChange('phone')} value={info.phone} />
+          </div>
+          <div className="input-box">
+            <label htmlFor="description">Describe yourself</label>
+            <textarea rows="5" cols="33" value={info.desc}></textarea>
           </div>
           <button id="info-button" onClick={this.props.mode}>Submit Info</button>
         </div>
