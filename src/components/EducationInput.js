@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import '../styles/input.css'
+import '../styles/cv.css'
 
 class EduInput extends Component {
   constructor(props) {
@@ -48,30 +50,34 @@ class EduInput extends Component {
 
     if (!edit && !remove) {
       return (
-        <div>
+        <div className="section">
           <button onClick={this.changeEdit}>Edit</button>
           <button onClick={this.removeSection}>Delete</button>
-          <h2>Education</h2>
-          <p>{edu.uni}</p>
-          <p>{edu.start} - {edu.end}</p>
-          <p>{edu.degree}</p>
+          <div className="edu-box">
+            <p>{edu.start} - {edu.end}</p>
+            <div>
+              <h2>{edu.uni}</h2>
+              <p>{edu.degree}</p>
+            </div>
+          </div>
         </div>
       );
     } else if (edit && !remove) {
       return (
-        <div>
-          <label htmlFor="uni">University</label>
-          <input id="uni" type="text" onChange={this.handleEduChange('uni')} value={edu.uni} />
-          <div />
-          <div>
+        <div className="section">
+          <div className="input-box">
+            <label htmlFor="uni">University</label>
+            <input id="uni" type="text" onChange={this.handleEduChange('uni')} value={edu.uni} />
+          </div>
+          <div className="input-box">
             <label htmlFor="start">Start year</label>
             <input id="start" type="text" onChange={this.handleEduChange('start')} value={edu.start} />
           </div>
-          <div>
+          <div className="input-box">
             <label htmlFor="end">End year</label>
             <input id="end" type="text" onChange={this.handleEduChange('end')} value={edu.end} />
           </div>
-          <div>
+          <div className="input-box">
             <label htmlFor="degree">Degree</label>
             <input id="degree" type="text" onChange={this.handleEduChange('degree')} value={edu.degree} />
           </div>

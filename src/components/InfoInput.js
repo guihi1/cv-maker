@@ -12,7 +12,7 @@ class InfoInput extends Component {
         lastName: 'Your last name',
         phone: '543245245',
         email: 'Your email',
-        desc: 'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
+        desc: 'Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.',
       },
     }
   }
@@ -30,9 +30,9 @@ class InfoInput extends Component {
     const { info } = this.state;
     if (!this.props.edit) {
       return (
-        <div className="form">
+        <div className="section">
           <button onClick={this.props.mode}>Edit</button>
-          <h1 className="info">{info.lastName} {info.firstName}</h1>
+          <h1 className="info" id="name">{info.firstName} {info.lastName}</h1>
           <p className="info"><strong>E-mail</strong> {info.email}</p>
           <p className="info"><strong>Phone</strong> {info.phone}</p>
           <p>{info.desc}</p>
@@ -40,7 +40,7 @@ class InfoInput extends Component {
       );
     } else {
       return (
-        <div className="form">
+        <div className="section">
           <h1>Information</h1>
           <div className="input-box">
             <label htmlFor="first-name">First name</label>

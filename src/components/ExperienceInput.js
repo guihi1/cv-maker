@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import '../styles/input.css';
+import '../styles/cv.css';
 
 class ExpInput extends Component {
   constructor(props) {
@@ -48,25 +49,27 @@ class ExpInput extends Component {
 
     if (!edit && !remove) {
       return (
-        <div>
+        <div className="section">
           <button onClick={this.changeEdit}>Edit</button>
           <button onClick={this.removeSection}>Delete</button>
-          <h2>Experience</h2>
-          <p>{exp.position}</p>
-          <p>{exp.start} - {exp.end}</p>
+          <div className="exp-box">
+            <p>{exp.start} - {exp.end}</p>
+            <p>{exp.position}</p>
+          </div>
         </div>
       );
     } else if (edit && !remove) {
       return (
-        <div>
-          <label htmlFor="position">Position</label>
-          <input id="position" type="text" onChange={this.handleExpChange('position')} value={exp.position} />
-          <div />
-          <div>
+        <div className="section">
+          <div className="input-box">
+            <label htmlFor="position">Position</label>
+            <input id="position" type="text" onChange={this.handleExpChange('position')} value={exp.position} />
+          </div>
+          <div className="input-box">
             <label htmlFor="start">Start year</label>
             <input id="start" type="text" onChange={this.handleExpChange('start')} value={exp.start} />
           </div>
-          <div>
+          <div className="input-box">
             <label htmlFor="end">End year</label>
             <input id="end" type="text" onChange={this.handleExpChange('end')} value={exp.end} />
           </div>
