@@ -9,6 +9,7 @@ class ExpInput extends Component {
     this.state = {
       exp: {
         position: 'fjsdja',
+        company: 'fjdskaf',
         start: '5245',
         end: '4522',
       },
@@ -65,11 +66,16 @@ class ExpInput extends Component {
     if (!edit && !remove) {
       return (
         <div className="section" onMouseEnter={this.showButton} onMouseLeave={this.hideButton}>
-          <button onClick={this.changeEdit} className={display}>Edit</button>
-          <button onClick={this.removeSection} className={display}>Delete</button>
+          <div className="buttons-box">
+            <button onClick={this.changeEdit} className={display}>Edit</button>
+            <button onClick={this.removeSection} className={display}>Delete</button>
+          </div>
           <div className="exp-box">
             <p>{exp.start} - {exp.end}</p>
-            <p>{exp.position}</p>
+            <div>
+              <p><strong>{exp.position}</strong></p>
+              <p>{exp.company}</p>
+            </div>
           </div>
         </div>
       );
@@ -87,6 +93,10 @@ class ExpInput extends Component {
           <div className="input-box">
             <label htmlFor="end">End year</label>
             <input id="end" type="text" onChange={this.handleExpChange('end')} value={exp.end} />
+          </div>
+          <div className="input-box">
+            <label htmlFor="company">Company</label>
+            <input id="company" type="text" onChange={this.handleExpChange('company')} value={exp.company} />
           </div>
           <button id="exp-button" onClick={this.changeEdit}>Submit</button>
         </div>
