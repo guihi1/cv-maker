@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import InfoInput from './components/InfoInput';
 import EduInput from './components/EducationInput';
 import ExpInput from './components/ExperienceInput';
+import './styles/cv.css';
 
 class App extends Component {
   constructor() {
@@ -11,6 +12,8 @@ class App extends Component {
       editInfo: true,
       eduArray: [<EduInput />],
       expArray: [<ExpInput />],
+      displayEdu: 'hidden',
+      displayExp: 'hidden',
     }
   }
 
@@ -38,15 +41,35 @@ class App extends Component {
     });
   }
 
+  showButton = (section) => (e) => {
+    e.preventDefault();
+    this.setState({
+      [section]: 'show',
+    });
+  }
+
+  hideButton = (section) => (e) => {
+    e.preventDefault();
+    this.setState({
+      [section]: 'hidden',
+    });
+  }
+
   render() {
-    const { editInfo, eduArray, expArray } = this.state;
+    const { editInfo, eduArray, expArray, displayEdu, displayExp } = this.state;
 
     return (
-      <div className="App">
+      <div id="cv">
         <InfoInput edit={editInfo} mode={this.changeEditMode} />
-        <button onClick={this.addEduSection}>Add education</button>
+        <div onMouseEnter={this.showButton('displayEdu')} onMouseLeave={this.hideButton('displayEdu')}>
+          <h2>Education</h2>
+          <button onClick={this.addEduSection} className={displayEdu}>Add education</button>
+        </div>
         {eduArray}
-        <button onClick={this.addExpSection}>Add experience</button>
+        <div onMouseEnter={this.showButton('displayExp')} onMouseLeave={this.hideButton('displayExp')}>
+          <h2>Professional appointments</h2>
+          <button onClick={this.addExpSection} className={displayExp}>Add experience</button>
+        </div>
         {expArray}
       </div>
     );
