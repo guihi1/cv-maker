@@ -26,3 +26,26 @@
 #name {
   font-size: 36px;
 }
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.title-button {
+  display: flex;
+  gap: 10px;
+}
+
+.buttons-box {
+  display: flex;
+  gap: 5px;
+  margin: 5px 0;
+}
+
+p {
+  margin: 5px 0;
+}
