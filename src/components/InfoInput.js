@@ -14,6 +14,7 @@ class InfoInput extends Component {
         email: 'Your email',
         desc: 'Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.',
       },
+      display: "hidden",
     }
   }
 
@@ -26,12 +27,26 @@ class InfoInput extends Component {
     });
   }
 
+  showButton = (e) => {
+    e.preventDefault();
+    this.setState({
+      display: 'show',
+    });
+  }
+
+  hideButton = (e) => {
+    e.preventDefault();
+    this.setState({
+      display: 'hidden',
+    });
+  }
+
   render() {
-    const { info } = this.state;
+    const { info, display } = this.state;
     if (!this.props.edit) {
       return (
-        <div className="section">
-          <button onClick={this.props.mode}>Edit</button>
+        <div className="section" onMouseEnter={this.showButton} onMouseLeave={this.hideButton}>
+          <button onClick={this.props.mode} className={display}>Edit</button>
           <h1 className="info" id="name">{info.firstName} {info.lastName}</h1>
           <p className="info"><strong>E-mail</strong> {info.email}</p>
           <p className="info"><strong>Phone</strong> {info.phone}</p>
