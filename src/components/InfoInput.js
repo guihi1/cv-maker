@@ -75,7 +75,7 @@ class InfoInput extends Component {
           </div>
           <div className="input-box">
             <label htmlFor="description">Describe yourself</label>
-            <textarea rows="5" cols="33" value={info.desc}></textarea>
+            <textarea rows="5" cols="33" defaultValue={info.desc}></textarea>
           </div>
           <button id="info-button" onClick={this.props.mode}>Submit Info</button>
         </div>
