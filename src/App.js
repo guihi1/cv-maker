@@ -61,12 +61,12 @@ class App extends Component {
     return (
       <div id="cv">
         <InfoInput edit={editInfo} mode={this.changeEditMode} />
-        <div onMouseEnter={this.showButton('displayEdu')} onMouseLeave={this.hideButton('displayEdu')}>
+        <div onMouseEnter={this.showButton('displayEdu')} onMouseLeave={this.hideButton('displayEdu')} className="title-button">
           <h2>Education</h2>
           <button onClick={this.addEduSection} className={displayEdu}>Add education</button>
         </div>
         {eduArray}
-        <div onMouseEnter={this.showButton('displayExp')} onMouseLeave={this.hideButton('displayExp')}>
+        <div onMouseEnter={this.showButton('displayExp')} onMouseLeave={this.hideButton('displayExp')} className="title-button">
           <h2>Professional appointments</h2>
           <button onClick={this.addExpSection} className={displayExp}>Add experience</button>
         </div>
