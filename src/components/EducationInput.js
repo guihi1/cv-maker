@@ -15,6 +15,7 @@ class EduInput extends Component {
       },
       edit: true,
       remove: false,
+      display: 'hidden',
     }
   }
 
@@ -45,14 +46,28 @@ class EduInput extends Component {
     })
   }
 
+  showButton = (e) => {
+    e.preventDefault();
+    this.setState({
+      display: 'show',
+    });
+  }
+
+  hideButton = (e) => {
+    e.preventDefault();
+    this.setState({
+      display: 'hidden',
+    });
+  }
+
   render() {
-    const { edu, edit, remove } = this.state;
+    const { edu, edit, remove, display } = this.state;
 
     if (!edit && !remove) {
       return (
-        <div className="section">
-          <button onClick={this.changeEdit}>Edit</button>
-          <button onClick={this.removeSection}>Delete</button>
+        <div className="section" onMouseEnter={this.showButton} onMouseLeave={this.hideButton}>
+          <button onClick={this.changeEdit} className={display}>Edit</button>
+          <button onClick={this.removeSection} className={display}>Delete</button>
           <div className="edu-box">
             <p>{edu.start} - {edu.end}</p>
             <div>
