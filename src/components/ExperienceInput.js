@@ -14,6 +14,7 @@ class ExpInput extends Component {
       },
       edit: true,
       remove: false,
+      display: 'hidden',
     }
   }
 
@@ -44,14 +45,28 @@ class ExpInput extends Component {
     })
   }
 
+  showButton = (e) => {
+    e.preventDefault();
+    this.setState({
+      display: 'show',
+    });
+  }
+
+  hideButton = (e) => {
+    e.preventDefault();
+    this.setState({
+      display: 'hidden',
+    });
+  }
+
   render() {
-    const { exp, edit, remove } = this.state;
+    const { exp, edit, remove, display } = this.state;
 
     if (!edit && !remove) {
       return (
-        <div className="section">
-          <button onClick={this.changeEdit}>Edit</button>
-          <button onClick={this.removeSection}>Delete</button>
+        <div className="section" onMouseEnter={this.showButton} onMouseLeave={this.hideButton}>
+          <button onClick={this.changeEdit} className={display}>Edit</button>
+          <button onClick={this.removeSection} className={display}>Delete</button>
           <div className="exp-box">
             <p>{exp.start} - {exp.end}</p>
             <p>{exp.position}</p>
