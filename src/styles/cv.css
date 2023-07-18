@@ -49,3 +49,9 @@
 p {
   margin: 5px 0;
 }
+
+button {
+  padding: 3px;
+  border-radius: 8px;
+  border: solid gray 2px;
+}
